@@ -1,34 +1,40 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 project(turing_machine)
 
 set(CMAKE_CXX_STANDARD 17)
-
-set(LIBRARIES ./libraries)
 set(TEST ./test)
 set(SRC ./src)
 
-include_directories(${LIBRARIES})
+option(TURING_MACHINE_USE_EXTERNAL_JSON "Use an external JSON library" OFF)
+
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/dependencies/)
+
+
 include_directories(${TEST})
 include_directories(${SRC})
 
 set(
-        SOURCE_FILES
+        SOURCE
             ${SRC}/main.cpp
-            ${SRC}/cell.cpp
-            ${SRC}/cell.h
-            ${SRC}/configuration.cpp
-            ${SRC}/configuration.h
-            ${SRC}/tape.cpp
-            ${SRC}/tape.h
-            ${SRC}/turing_machine.cpp
-            ${SRC}/turing_machine.h
+            ${SRC}/program.cpp
+            ${SRC}/util.cpp
+            ${SRC}/machine/cell.cpp
+            ${SRC}/machine/configuration.cpp
+            ${SRC}/machine/tape.cpp
+            ${SRC}/machine/turing_machine.cpp
 )
 
 set(
-        TEST_FILES
-            ${TEST}/main.cpp
-            ${TEST}/configuration.cpp
+    HEADERS
+            ${SRC}/util.h
+            ${SRC}/machine/cell.h
+            ${SRC}/machine/configuration.h
+            ${SRC}/machine/turing_machine.h
+            ${SRC}/machine/tape.h
+            ${SRC}/program.h
 )
 
-add_executable(turing_machine ${SOURCE_FILES})
-add_executable(test_suite ${TEST_FILES})
+add_executable(turing_machine ${SOURCE})
+target_link_libraries(turing_machine nlohmann_json::nlohmann_json)
+target_link_libraries(turing_machine nlohmann_json)

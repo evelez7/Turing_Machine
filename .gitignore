@@ -131,4 +131,14 @@ Temporary Items
 
 .idea/
 .vscode/
+cmake_install.cmake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# project specific files
 doc/
+include/
+turing_machine
+turing_machine.cbp
+dependencies/Makefile
