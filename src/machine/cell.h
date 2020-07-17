@@ -7,8 +7,8 @@ private:
 public:
     Cell(char* content);
     Cell(char& content);
-    char getContent();
-    char writeContent(char& contentToWrite);
+    char get_content();
+    char write_content(char const&);
 };
 
 #endif
