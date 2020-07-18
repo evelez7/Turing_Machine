@@ -12,15 +12,17 @@ using json = nlohmann::json;
 class Turing_Machine {
 private:
     Tape tape;
-    std::shared_ptr<Program> const& current_program;
+    std::shared_ptr<Cell> head;
+    std::shared_ptr<Program> const& program;
+    Configuration config;
 public:
     /**
      * \brief Construct using Program 
      */
     Turing_Machine(const std::shared_ptr<Program> &current_program);
     void execute();
-    void write_to_tape(const std::vector<std::string> &);
-    void print_tape();
+    void write_to_tape(const std::string &);
+    void print_tape() const;
 };
 
 #endif //TURING_MACHINE_H

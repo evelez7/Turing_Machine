@@ -39,6 +39,7 @@ int main() {
     auto program_ptr = std::make_shared<Program>(program_to_execute);
     Turing_Machine tm(program_ptr);
     tm.print_tape();
+    tm.execute();
     return 0;
 }
 

@@ -2,7 +2,19 @@
 
 Cell::Cell(const std::string &to_write) {
     this->content = to_write;
+    this->blank = false;
 }
+
+Cell::Cell(const std::string &to_write, bool blank) {
+    this->blank = blank;
+    if (!this->blank) {
+       this->content = to_write;
+    }
+}
+
+Cell::Cell() {
+    this->blank = true;
+};
 
 void Cell::write_to_cell(const std::string &to_write) {
     this->content = to_write;
@@ -10,4 +22,8 @@ void Cell::write_to_cell(const std::string &to_write) {
 
 std::string Cell::get_content() const {
     return this->content;
+}
+
+bool Cell::is_blank() const {
+    return this->blank;
 }
