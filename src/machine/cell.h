@@ -1,14 +1,15 @@
 #ifndef CELL_H
 #define CELL_H
 
+#include <string>
+
 class Cell {
 private:
-    char* content;
+    std::string content;
 public:
-    Cell(char* content);
-    Cell(char& content);
-    char get_content();
-    char write_content(char const&);
+    Cell(const std::string &);
+    void write_to_cell(const std::string &);
+    std::string get_content() const;
 };
 
 #endif

@@ -56,3 +56,7 @@ Program::Program(json const& program_json) {
 bool Program::verify() noexcept(false) {
 
 }
+
+std::vector<std::string> Program::get_arguments() {
+    return this->arguments;
+}

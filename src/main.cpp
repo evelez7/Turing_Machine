@@ -38,6 +38,7 @@ int main() {
     Program program_to_execute(program_to_execute_json);
     auto program_ptr = std::make_shared<Program>(program_to_execute);
     Turing_Machine tm(program_ptr);
+    tm.print_tape();
     return 0;
 }
 
@@ -45,7 +46,7 @@ int get_user_input(int const& size) {
     int option;
     while (true) {
         std::cin >> option;
-        if (std::cin.fail() || option >= size || option <= 0) {
+        if (std::cin.fail() || option > size || option <= 0) {
             std::cin.clear();
             printf("Incorrect input, please select from the available options");
             continue;
