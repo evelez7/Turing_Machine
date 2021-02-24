@@ -1,17 +1,20 @@
 cmake_minimum_required(VERSION 3.16)
-project(turing_machine)
+project(turing_machine CXX)
+
+# Included in this file are CMake commands which are supposed to allow for integration without flags
+# When used, the JSON lib files are not linked and raise errors when including each other. (cannot find nlohmann/serializer.cpp)
+# Which sucks, because I do not like having to specify version numbers,
+#if these are used, then use <json.hpp>
+# set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMake_Modules/)
+
+# Change version number here to build, assuming same homebrew config
+# if this is used, use <nlohmann/json.hpp>
+set(CMAKE_CXX_FLAGS "-I/usr/local/Cellar/nlohmann-json/3.9.1_1/include/")
+
+# find_package(nlohmann-json REQUIRED)
 
 set(CMAKE_CXX_STANDARD 17)
-set(TEST ./test)
 set(SRC ./src)
-
-option(TURING_MACHINE_USE_EXTERNAL_JSON "Use an external JSON library" OFF)
-
-set(JSON_BuildTests OFF CACHE INTERNAL "")
-add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/dependencies/)
-
-
-include_directories(${TEST})
 include_directories(${SRC})
 
 set(
@@ -35,6 +38,5 @@ set(
             ${SRC}/program.h
 )
 
-add_executable(turing_machine ${SOURCE})
-target_link_libraries(turing_machine nlohmann_json::nlohmann_json)
-target_link_libraries(turing_machine nlohmann_json)
+add_executable(turing_machine.exe ${SOURCE})
+# target_include_directories(turing_machine.exe PRIVATE ${JSON_INCLUDE_DIR})
