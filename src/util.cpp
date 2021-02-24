@@ -1,3 +1,9 @@
+#include <iostream>
+#include <fstream>
+#include <filesystem>
+
+namespace fs = std::filesystem;
+
 void open_file(std::ifstream &config_file, const fs::path &file_path){
     try {
         config_file.open(file_path.string());
@@ -9,8 +15,4 @@ void open_file(std::ifstream &config_file, const fs::path &file_path){
     } catch (const std::exception& ex) {
         std::cout << "Configuration file could not be opened" << std::endl;
     }
-}
-
-int get_directory_size() {
-    return this->directory_entries->size();
 }

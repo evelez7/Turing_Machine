@@ -2,12 +2,13 @@
 #ifndef TURING_MACHINE_H
 #define TURING_MACHINE_H
 #include <memory>
-#include <nlohmann/json.hpp>
+#include <map>
+#include <string>
+#include "cell.h"
 #include "configuration.h"
 #include "tape.h"
 #include "../program.h"
 
-using json = nlohmann::json;
 
 class Turing_Machine {
 private:
@@ -15,9 +16,10 @@ private:
     std::shared_ptr<Cell> head;
     std::shared_ptr<Program> const& program;
     Configuration config;
+    std::shared_ptr<Cell> move_head(const std::map<std::string, std::string> &);
 public:
     /**
-     * \brief Construct using Program 
+     * \brief Construct using Program
      */
     Turing_Machine(const std::shared_ptr<Program> &current_program);
     void execute();

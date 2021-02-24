@@ -40,5 +40,5 @@ void Tape::write(const std::string &to_write) {
 }
 
 void Tape::write(const std::string &to_write, bool blank) {
-    this->cell_list.emplace_back(new Cell(to_write));
+    this->cell_list.emplace_back(new Cell(to_write, blank));
 }

@@ -8,11 +8,11 @@
 #include "./machine/turing_machine.h"
 #include "program.h"
 
-namespace fs = std::filesystem;
-using json = nlohmann::json;
+using nlohmann::json;
 
+namespace fs = std::filesystem;
 void print_bars();
-std::vector<fs::path> open_program_dir() noexcept(false);
+std::vector<fs::path> open_program_dir();
 int get_user_input(int const&);
 
 int main() {
@@ -65,7 +65,7 @@ void print_bars() {
     std::cout << std::endl;
 }
 
-std::vector<fs::path> open_program_dir() noexcept(false) {
+std::vector<fs::path> open_program_dir() {
     fs::path current_path = fs::current_path();
     fs::path programs_dir_path = current_path / "programs";
 

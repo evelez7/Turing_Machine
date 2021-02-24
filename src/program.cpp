@@ -20,6 +20,7 @@ Program::Program(json const& program_json) {
         auto new_transition = std::map<std::string, std::string>();
         for (json::iterator transition_it = (*table_it).begin(); transition_it != (*table_it).end(); ++transition_it) {
             new_transition[transition_it.key()] = transition_it.value();
+            std::cout << transition_it.key() << std::endl;
         }
         this->function_table.push_back(new_transition);
     }
@@ -53,10 +54,31 @@ Program::Program(json const& program_json) {
     }
 }
 
+Program::~Program() {
+
+}
+
 bool Program::verify() noexcept(false) {
 
 }
 
 std::vector<std::string> Program::get_arguments() {
     return this->arguments;
+}
+
+string_vector Program::get_halting_states() {
+    return this->halting_states;
+}
+
+string Program::get_initial_state() {
+    return this->initial_state;
+}
+
+std::string Program::get_blank_symbol() {
+    return this->blank_symbol;
+}
+
+
+std::vector<std::map<std::string, std::string>> Program::get_function_table() {
+    return this->function_table;
 }
