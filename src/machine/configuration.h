@@ -12,19 +12,21 @@
  *
  * It holds references to existing config files and is called to initialize the fields of a TM.
  */
-class Configuration {
+class Configuration
+{
 private:
-    std::string state;
-    std::shared_ptr<Cell> cell;
-    std::vector<std::shared_ptr<Cell>> active_tape_left;
-    std::vector<std::shared_ptr<Cell>> active_tape_right;
+  std::string state;
+  std::shared_ptr<Cell> cell;
+  std::vector<std::shared_ptr<Cell>> active_tape_left;
+  std::vector<std::shared_ptr<Cell>> active_tape_right;
+
 public:
-    /**
+  /**
      * Default constructor will initialize directory_entries vector from constant programs dir
      */
-    Configuration(const Tape &, std::string );
-    Configuration();
-    std::string get_state();
+  Configuration(const Tape &, std::string);
+  Configuration();
+  std::string get_state();
 };
 
 #endif
