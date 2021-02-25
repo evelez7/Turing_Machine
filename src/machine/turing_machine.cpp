@@ -28,7 +28,6 @@ void Turing_Machine::execute()
       if (transition.at("current_symbol") == current_symbol && transition.at("current_state") == this->config.get_state())
         // correct transition
         this->move_head(transition);
-    }
   }
 }
 

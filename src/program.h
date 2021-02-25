@@ -28,23 +28,13 @@ private:
   string initial_state;
   string name;
 
-public:
-  /**
-     * \brief Weak construction
-     */
-  Program();
-  Program(json const &);
-  ~Program();
+  bool verify(const json &);
 
-  /**
-     * \brief Construct using a JSON object
-     *
-     * \details The JSON object will be verified to have all of the components needed to be used for a TM
-     *
-     * \param program_json
-     */
-  // explicit Program(json const&);
-  bool verify() noexcept(false);
+public:
+  bool verified;
+  Program();
+  ~Program();
+  bool load(const json&);
   string_vector get_arguments();
   string_vector get_halting_states();
   string get_initial_state();
